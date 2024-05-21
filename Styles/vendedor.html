@@ -1,0 +1,224 @@
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Vendedor</title>
+</head>
+<body>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #52616b;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #52616b;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.profile img {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+.contact-info span {
+    font-size: 16px;
+}
+
+.logout {
+    padding: 10px 20px;
+    background-color: #00cfc8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout:hover {
+    background-color: #c9302c;
+}
+
+.history {
+    margin-top: 20px;
+}
+
+.history h2 {
+    margin-bottom: 10px;
+}
+
+.tickets {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.ticket {
+    width: 150px;
+    height: 200px;
+    background-color: #ddd;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #52616b;
+}
+
+.sale-details div {
+    padding: 10px 0;
+    border-bottom: 1px solid #52616b;
+}
+
+.add-tickets {
+    margin-top: 20px;
+}
+
+.add-tickets h2 {
+    margin-bottom: 10px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 190px;
+}
+
+.form-group2 {
+    flex: 1;
+    min-width: 230px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.ticket-layout {
+    width: 150px;
+    height: 200px;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #52616b;
+}
+
+    </style>
+    <div class="container">
+        <header>
+            <div class="profile">    
+                <img src="profile.png" alt="Profile Icon">
+                <div class="contact-info">
+                <p>
+                <input type="text" placeholder="Nome" name="nome" required>
+                </p>
+                <input type="tel" placeholder="Contacto" name="contacto" required>
+                </div>
+            </div>
+            <button class="logout">Log Out</button>
+        </header>
+        <section class="history">
+            <h2>Histórico de vendas e Recibos</h2>
+            <div class="sale-details">
+            <div class="tickets">
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                <div class="ticket">layout do bilhete</div>
+                
+            </div>
+                <div>Detalhe da venda - Recibo da compra</div>
+                <div>Detalhe da venda - Recibo da compra</div>
+            </div>
+        </section>
+        <section class="add-tickets">
+            <h2>Adicionar bilhetes</h2>
+            <div class="form">
+                <div class="form-group">
+                    <div class="ticket-layout" id="event-layout">layout do bilhete</div>
+                </div>
+                <div class="form-group">
+                    <label for="event-name">Nome do evento</label>
+                    <input type="text" id="event-name">
+                </div>
+                <div class="form-group">
+                    <label for="promoter">Promotor</label>
+                    <input type="text" id="promoter">
+                </div>
+                <div class="form-group">
+                    <label for="duration">Duração do evento</label>
+                    <input type="text" id="duration">
+                </div>
+                <div class="form-group2">
+                    <label for="intro">Breve introdução</label>
+                    <textarea id="intro"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="age-class">Classificação Etária</label>
+                    <input type="text" id="age-class">
+                </div>
+                <div class="form-group">
+                    <label for="price">Preço</label>
+                    <input type="text" id="price">
+                </div>
+                <div class="form-group">
+                    <label for="data-tempo">Data e Horas</label>
+                    <input type="text" id="data-tempo">
+                </div>
+                <div class="form-group2">
+                    <label for="synopse">Sinopse</label>
+                    <textarea id="synopse"></textarea>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
