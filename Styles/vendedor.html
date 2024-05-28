@@ -2,191 +2,228 @@
 <head>
     <meta charset="UTF-8">
     <title>Vendedor</title>
-</head>
-<body>
     <style>
         * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    background-color: #52616b;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-.container {
-    width: 100%;
-    margin: 0 auto;
-    background-color: white;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+        .container {
+            width: 70%;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
+        }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #52616b;
-}
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 150px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #52616b;
+        }
 
-.profile {
-    display: flex;
-    align-items: center;
-}
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
 
-.profile img {
-    width: 50px;
-    height: 50px;
-    margin-right: 10px;
-}
+        .profile img {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
 
-.contact-info span {
-    font-size: 16px;
-}
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.logout {
-    padding: 10px 20px;
-    background-color: #00cfc8;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
+        .contact-info input {
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 5px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .contact-info input:last-of-type {
+            margin-bottom: 10px; 
+        }
 
-.logout:hover {
-    background-color: #c9302c;
-}
+        .logout {
+            padding: 5px 27px;
+            background-color: #00cfc8;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
 
-.history {
-    margin-top: 20px;
-}
+        .logout:hover {
+            background-color: #066a67;
+        }
 
-.history h2 {
-    margin-bottom: 10px;
-}
+        .history {
+            margin-top: 20px;
+        }
 
-.tickets {
-    display: flex;
-    overflow-x: auto;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ddd;
-}
+        .history h2 {
+            margin-bottom: 10px;
+        }
 
-.ticket {
-    width: 150px;
-    height: 200px;
-    background-color: #ddd;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #333;
-    border: 1px solid #52616b;
-}
+        .tickets {
+            display: flex;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ddd;
+        }
 
-.sale-details div {
-    padding: 10px 0;
-    border-bottom: 1px solid #52616b;
-}
+        .ticket {
+            width: 150px;
+            height: 200px;
+            background-color: #ddd;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #52616b;
+        }
 
-.add-tickets {
-    margin-top: 20px;
-}
+        .sale-details div {
+            padding: 10px 0;
+            border-bottom: 1px solid #52616b;
+        }
 
-.add-tickets h2 {
-    margin-bottom: 10px;
-}
+        .add-tickets {
+            margin-top: 20px;
+        }
 
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
+        .add-tickets h2 {
+            margin-bottom: 10px;
+        }
 
-.form-group {
-    flex: 1;
-    min-width: 190px;
-}
+        .form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
 
-.form-group2 {
-    flex: 1;
-    min-width: 230px;
-}
+        .form-group {
+            flex: 1;
+            min-width: 190px;
+        }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
+        .form-group2 {
+            flex: 1;
+            min-width: 230px;
+        }
 
-input, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
 
-textarea {
-    resize: vertical;
-    height: 100px;
-}
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-.ticket-layout {
-    width: 150px;
-    height: 200px;
-    background-color: #ddd;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    color: #333;
-    border: 1px solid #52616b;
-}
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
 
+        .ticket-layout {
+            width: 150px;
+            height: 200px;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #52616b;
+            position: relative;
+        }
+
+        .ticket-layout img {
+            max-width: 100%;
+            max-height: 100%;
+        }
     </style>
+</head>
+<body>
     <div class="container">
         <header>
-            <div class="profile">    
-                <img src="profile.png" alt="Profile Icon">
+            <div class="profile-container">
+                <input type="file" id="profile-image-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)">
+                <div class="profile" onclick="document.getElementById('profile-image-upload').click();">
+                    <img src="profile.png" alt="Profile Icon">
+                </div>
                 <div class="contact-info">
-                <p>
-                <input type="text" placeholder="Nome" name="nome" required>
-                </p>
-                <input type="tel" placeholder="Contacto" name="contacto" required>
+                    <input type="text" placeholder="Nome" name="nome" required>
+                    <input type="tel" placeholder="Contacto" name="contacto" required>
                 </div>
             </div>
-            <button class="logout">Log Out</button>
+            <button class="logout">Terminar Sessão</button>
         </header>
         <section class="history">
             <h2>Histórico de vendas e Recibos</h2>
             <div class="sale-details">
-            <div class="tickets">
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                <div class="ticket">layout do bilhete</div>
-                
+                <div class="tickets">
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                </div>
+                <div>Detalhe da venda - Recibo da compra
+                <input type="file" id="receipt-pdf-upload" accept=".pdf" onchange="previewReceiptPDF(event)">
             </div>
-                <div>Detalhe da venda - Recibo da compra</div>
-                <div>Detalhe da venda - Recibo da compra</div>
-            </div>
+            <div id="receipt-pdf-container"></div>
+    
         </section>
         <section class="add-tickets">
-            <h2>Adicionar bilhetes</h2>
+            <h2>Adicionar Bilhetes</h2>
             <div class="form">
                 <div class="form-group">
-                    <div class="ticket-layout" id="event-layout">layout do bilhete</div>
+                    <div class="ticket-layout" id="event-layout">
+                        <img id="ticket-image" src="" alt="layout do bilhete" style="display: none;">
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="event-name">Nome do evento</label>
+                    <label for="ticket-image-upload">Imagem do Bilhete</label>
+                    <input type="file" id="ticket-image-upload" accept="image/*" onchange="previewImage(event)">
+                </div>
+                <div class="form-group">
+                    <label for="event-name">Nome do Evento</label>
                     <input type="text" id="event-name">
                 </div>
                 <div class="form-group">
@@ -194,11 +231,11 @@ textarea {
                     <input type="text" id="promoter">
                 </div>
                 <div class="form-group">
-                    <label for="duration">Duração do evento</label>
+                    <label for="duration">Duração do Evento</label>
                     <input type="text" id="duration">
                 </div>
                 <div class="form-group2">
-                    <label for="intro">Breve introdução</label>
+                    <label for="intro">Breve Introdução</label>
                     <textarea id="intro"></textarea>
                 </div>
                 <div class="form-group">
@@ -218,7 +255,73 @@ textarea {
                     <textarea id="synopse"></textarea>
                 </div>
             </div>
+            <button onclick="saveData()">Guardar</button> 
         </section>
     </div>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function() {
+                const dataURL = reader.result;
+                const ticketImage = document.getElementById('ticket-image');
+                ticketImage.src = dataURL;
+                ticketImage.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+       
+        function previewProfileImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const dataURL = reader.result;
+                    const profileImage = document.querySelector('.profile img');
+                    profileImage.src = dataURL;
+                };
+            }
+        }
+        function previewReceiptPDF(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const dataURL = reader.result;
+                    const pdfContainer = document.getElementById('receipt-pdf-container');
+                    const pdfFileName = input.files[0].name;
+                    pdfContainer.innerHTML = `<a href="${dataURL}" target="_blank">Abrir PDF</a>`;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function saveData() {
+            const confirmSave = confirm("Tem certeza de que deseja guardar todas as informações?");
+            if (confirmSave) {
+                const eventName = document.getElementById('event-name').value;
+                const promoter = document.getElementById('promoter').value;
+                const duration = document.getElementById('duration').value;
+                const intro = document.getElementById('intro').value;
+                const ageClass = document.getElementById('age-class').value;
+                const price = document.getElementById('price').value;
+                const dateAndTime = document.getElementById('data-tempo').value;
+                const synopse = document.getElementById('synopse').value;
+                const ticketImage = document.getElementById('ticket-image').src;
+
+
+                console.log({
+                    eventName,
+                    promoter,
+                    duration,
+                    intro,
+                    ageClass,
+                    price,
+                    dateAndTime,
+                    synopse,
+                    ticketImage
+                });
+            }
+        }
+    </script>
 </body>
 </html>
