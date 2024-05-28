@@ -103,7 +103,7 @@
         .payment-methods {
             display: flex;
             justify-content: space-around;
-            margin: 20px 0;
+            margin: 10px ;
         }
         .payment-methods label {
             display: block;
@@ -209,6 +209,7 @@
 
     <div class="compra">
         <h2>Compra de Bilhetes</h2>
+        <form id="form-compra" action="processar_pagamento.php" method="post" onsubmit="redirecionarPagamento()"></form>
         <form action="processar_pagamento.php" method="post">
             <div class="form-group">
                 <label for="quantidade">Quantidade:</label>
@@ -242,10 +243,10 @@
                 <label for="nome">Nome:</label>
                 <input type="text" id="nome" name="nome" placeholder="Nome" required>
             </div>
-            <div class="button-group">
-                <button type="submit">COMPRAR</button>
-            </div>
         </form>
+        <div class="button-group">
+            <button id="botao-comprar">COMPRAR</button>
+        </div>
     </div>
 
     <div class="button-group hidden" id="submit-changes">
@@ -273,6 +274,28 @@
             document.getElementById('senha-vendedor').classList.remove('hidden');
         }
 
+        document.getElementById('telemovel').addEventListener('input', function() {
+    // Remove todos os caracteres que não são números , /\D/ é uma expressao que corresponde a todos
+    // os caracteres que nao sao digitos, e o "g" indica que a substituicao deve ser feita globalmente em toda a string
+    this.value = this.value.replace(/\D/g, '');
+
+    // Limita o número de caracteres a 9
+    if (this.value.length > 9) {
+        this.value = this.value.slice(0, 9);
+    }
+    });
+
+    document.getElementById('botao-comprar').addEventListener('click', function(event) {
+        event.preventDefault(); // Evita que o formulário seja enviado automaticamente
+
+        const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+        if (metodoPagamento === 'MBWAY') {
+            window.location.href = 'https://www.mbway.pt';
+        } else if (metodoPagamento === 'PAYPAL') {
+            window.location.href = 'https://www.paypal.com/pt/home';
+        }
+    });
+
         function alterarMudanca() {
             const dados = {
                 promotor: document.getElementById('promotor').value,
@@ -286,7 +309,7 @@
                 classificacao: document.getElementById('classificacao').value,
                 preco: document.getElementById('preco').value
             };
-            localStorage.setItem('dadosEvento', JSON.stringify(dados));
+            localStorage.setItem('dadosEvento', JSON.stringify(dados)); //transforma o objeto dadosEvento em string dados
             alert('Alterações submetidas com sucesso!');
         }
 
