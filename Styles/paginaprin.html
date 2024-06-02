@@ -44,6 +44,7 @@
 
         .ticket {
             flex: 1;
+            margin: 5px;
         }
 
         .ticket img {
@@ -113,14 +114,14 @@
         }
 
         .slide {
-            flex: 0 0 auto;
+            flex: 0 0 20%;
             display: flex;
             justify-content: center;
+            width: 70%;
         }
 
         .slide img {
-            width: 100px; 
-            height: 100px;
+            width: 90%;
             object-fit: contain;
         }
 
@@ -312,28 +313,41 @@
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function() {
+      function shuffleSlides(slides) {
+    for (let i = slides.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        slides[i].style.order = j;
+        slides[j].style.order = i;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function() {
     const slideContainer = document.querySelector('.slide-container');
-    const slides = document.querySelectorAll('.slide');
+    const slides = Array.from(document.querySelectorAll('.slide'));
     const slideCount = slides.length;
-    const slideWidth = slides[0].offsetWidth;
-    const totalWidth = slideWidth * slideCount;
-
-    slideContainer.style.width = `${totalWidth}px`;
-
+    const slidesToShow = 5;
+    const slideWidth = slideContainer.offsetWidth / slidesToShow;
     let currentIndex = 0;
 
+    // Embaralha os slides
+    shuffleSlides(slides);
+
+    slides.forEach(slide => {
+        slide.style.flex = `0 0 ${slideWidth}px`;
+    });
+
     function moveSlides() {
-        currentIndex++;
+        currentIndex += slidesToShow;
         if (currentIndex >= slideCount) {
-            currentIndex = 0; // Reinicia para a primeira imagem
+            currentIndex = 0;
         }
-        slideContainer.style.transition = 'transform 1s ease'; // Adiciona transição suave
+        slideContainer.style.transition = 'transform 1s ease';
         slideContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
     }
 
-    setInterval(moveSlides, 3000); // Mudar a cada 3 segundos
+    setInterval(moveSlides, 3000);
 });
+
 
 
 
