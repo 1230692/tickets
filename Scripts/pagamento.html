@@ -3,143 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalhes | Pagamento do Produto</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            padding: 10px;
-            background-color: #52616b;
-        }
-        .container {
-            display: flex;
-            justify-content: space-between;
-        }
-        .detalhes, .cartaz {
-            padding: 25px;
-            width: 48%;
-            box-sizing: border-box;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-        }
-        .detalhes h2, .cartaz h2 {
-            text-align: center;
-            background-color: #00CFC8;
-            color: white;
-            padding: 10px;
-            margin: -15px -15px 15px -15px;
-            border-radius: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-            border: 2px solid rgb(164, 162, 162);
-            border-radius: 5px;
-        }
-        .form-group input[type="text"], .form-group input[type="email"] {
-            height: 30px;
-        }
-        .form-group textarea {
-            height: 60px;
-        }
-        .form-group .cartaz-quadrado {
-            width: 20%;
-            padding-top: 30%;
-            position: relative;
-            background-color: #52616b;
-            border: 1px solid #f0f0f0;
-            border-radius: 5px;
-            overflow: auto;
-        }
-        .form-group .cartaz-quadrado img {
-            display: block;
-            margin: 4px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 95%;
-            height: 95%;
-            object-fit: fill;
-        }
-        .button-group {
-            text-align: center;
-        }
-        .button-group button {
-            background-color: #00CFC8;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-        .button-group button:hover {
-            background-color: rgb(50, 50, 50);
-        }
-        .compra {
-            border: 1px solid #52616b;
-            padding: 20px;
-            margin-top: 20px;
-            box-sizing: border-box;
-            background-color: #f0f0f0;
-            border-radius: 10px;
-        }
-        .compra h2 {
-            text-align: center;
-            background-color: #00CFC8;
-            color: white;
-            padding: 10px;
-            margin: -15px -15px 15px -15px;
-            border-radius: 10px;
-        }
-        .payment-methods {
-            display: flex;
-            justify-content: space-around;
-            margin: 10px ;
-        }
-        .payment-methods label {
-            display: block;
-            text-align: center;
-        }
-        .payment-methods input {
-            margin-top: 10px;
-        }
-        #senha-vendedor {
-            margin-bottom: 20px;
-        }
-        .hidden {
-            display: none;
-        }
-        .status {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background-color: #00CFC8;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
-        #senha-container{
-            color: white;
-            display: flex;
-            justify-content: center;
-        align-items: center;
-        background-color: #00CFC8;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-        margin: 0 auto;
-        padding: 20px;
-        width: 300px;
-        }
-    </style>
+    <link rel="stylesheet" href="Styles/pagamento.css">
 </head>
 <body onload="carregarDados()">
     <div id="senha-vendedor">
@@ -173,7 +37,7 @@
             <div class="form-group">
                 <label for="cartaz">Cartaz:</label>
                 <div class="cartaz-quadrado">
-                    <img src="logo.jpeg" alt="Cartaz do Evento" width="50%">
+                    <img src="Images/logo.jpeg" alt="Cartaz do Evento" width="50%">
                 </div>
             </div>
         </div>

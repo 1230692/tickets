@@ -4,192 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tickets</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #52616b;
-            color: #fff;
-        }
-
-        .logo-search {
-            padding: 3%;
-        }
-
-        .main-page {
-            padding: 40px;
-            margin: 14%;
-            margin-top: -30px;
-        }
-
-        .tema, .ticket-seccao, .fundo, .header, .slider, .ticket-seccao {
-            margin-bottom: 15px;
-        }
-
-        .tema p {
-            background-color: #00CFC8;
-            text-align: center;
-            align-items: center;
-            height: 38px;
-            width: 11%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .ticket-seccao {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .ticket {
-            flex: 1;
-            margin: 5px;
-        }
-
-        .ticket img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .fundo, .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .contacts, .information, .payment-methods {
-            padding: 5px;
-            text-align: center;
-            width: 33.33%;
-        }
-
-        .img-pagamento {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            justify-content: flex-start;
-        }
-
-        .img-pagamento img {
-            width: 90px;
-            height: auto;
-            position: relative;
-            top: 1px;
-            left: 200px;
-        }
-
-        .header {
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .logo {
-            width: 700px;
-            height: auto;
-            margin-bottom: 35px;
-            margin-top: -25px;
-        }
-
-        .search input {
-            padding: 5px;
-            font-size: 10px;
-            text-align: center;
-            border: 3px solid #fff;
-            border-radius: 4px;
-        }
-
-        .slider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .slide-container {
-            display: flex;
-            transition: transform 1s ease;
-        }
-
-        .slide {
-            flex: 0 0 20%;
-            display: flex;
-            justify-content: center;
-            width: 70%;
-        }
-
-        .slide img {
-            width: 90%;
-            object-fit: contain;
-        }
-
-        .fundo-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            width: 100%;
-            padding: 2%;
-            background-color: #333;
-            color: #fff;
-            margin-bottom: -50px;
-            margin-top: -200px;
-        }
-
-        .fundo p {
-            margin: 10px 0;
-        }
-
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            width: 139px;
-            height: 93px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 10px 14px;
-            text-decoration: none;
-            display: block;
-            font-size: 10px;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #00CFC8;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown-btn {
-            background-color: #00CFC8;
-            cursor: pointer;
-            padding: 5px;
-            font-size: 10px;
-            text-align: center;
-            border: 3px solid #00CFC8;
-            border-radius: 3px;
-            margin-top: 10px;
-            width: 139px;
-            margin-bottom: -20px;
-        }
-    </style>
+    <link rel="stylesheet" href="Styles/paginaprin.css">
 </head>
 <body>
     <div class="logo-search">
         <div class="header">
-            <img src="LogoSemFundo.png" alt="LOGO LOJA" class="logo">
+            <img src="Images/LogoSemFundo.png" alt="LOGO LOJA" class="logo">
             <div class="search">
                 <input type="text" placeholder="Pesquisar Bilhetes">
             </div>
@@ -208,21 +28,21 @@
     <div class="main-page">
         <div class="slider">
             <div class="slide-container">
-                <div class="slide"><img src="c1.png" alt="Concerto 1"></div>
-                <div class="slide"><img src="c2.png" alt="Concerto 2"></div>
-                <div class="slide"><img src="c3.png" alt="Concerto 3"></div>
-                <div class="slide"><img src="c4.png" alt="Concerto 4"></div>
-                <div class="slide"><img src="c5.png" alt="Concerto 5"></div>
-                <div class="slide"><img src="t1.png" alt="Teatro 1"></div>
-                <div class="slide"><img src="t2.png" alt="Teatro 2"></div>
-                <div class="slide"><img src="t3.png" alt="Teatro 3"></div>
-                <div class="slide"><img src="t4.png" alt="Teatro 4"></div>
-                <div class="slide"><img src="t5.png" alt="Teatro 5"></div>
-                <div class="slide"><img src="m1.png" alt="Museu 1"></div>
-                <div class="slide"><img src="m2.png" alt="Museu 2"></div>
-                <div class="slide"><img src="m3.png" alt="Museu 3"></div>
-                <div class="slide"><img src="m4.png" alt="Museu 4"></div>
-                <div class="slide"><img src="m5.png" alt="Museu 5"></div>
+                <div class="slide"><img src="Images/c1.png" alt="Concerto 1"></div>
+                <div class="slide"><img src="Images/c2.png" alt="Concerto 2"></div>
+                <div class="slide"><img src="Images/c3.png" alt="Concerto 3"></div>
+                <div class="slide"><img src="Images/c4.png" alt="Concerto 4"></div>
+                <div class="slide"><img src="Images/c5.png" alt="Concerto 5"></div>
+                <div class="slide"><img src="Images/t1.png" alt="Teatro 1"></div>
+                <div class="slide"><img src="Images/t2.png" alt="Teatro 2"></div>
+                <div class="slide"><img src="Images/t3.png" alt="Teatro 3"></div>
+                <div class="slide"><img src="Images/t4.png" alt="Teatro 4"></div>
+                <div class="slide"><img src="Images/t5.png" alt="Teatro 5"></div>
+                <div class="slide"><img src="Images/m1.png" alt="Museu 1"></div>
+                <div class="slide"><img src="Images/m2.png" alt="Museu 2"></div>
+                <div class="slide"><img src="Images/m3.png" alt="Museu 3"></div>
+                <div class="slide"><img src="Images/m4.png" alt="Museu 4"></div>
+                <div class="slide"><img src="Images/m5.png" alt="Museu 5"></div>
             </div>
         </div>
         
@@ -231,19 +51,19 @@
         </div>
         <div class="ticket-seccao">
             <div class="ticket" data-category="concerto">
-                <img src="c1.png" alt="Concerto 1">
+                <img src="Images/c1.png" alt="Concerto 1">
             </div>
             <div class="ticket" data-category="concerto">
-                <img src="c2.png" alt="Concerto 2">
+                <img src="Images/c2.png" alt="Concerto 2">
             </div>
             <div class="ticket" data-category="concerto">
-                <img src="c3.png" alt="Concerto 3">
+                <img src="Images/c3.png" alt="Concerto 3">
             </div>
             <div class="ticket" data-category="concerto">
-                <img src="c4.png" alt="Concerto 4">
+                <img src="Images/c4.png" alt="Concerto 4">
             </div>
             <div class="ticket" data-category="concerto">
-                <img src="c5.png" alt="Concerto 5">
+                <img src="Images/c5.png" alt="Concerto 5">
             </div>
         </div>
         <div class="tema">
@@ -251,19 +71,19 @@
         </div>
         <div class="ticket-seccao">
             <div class="ticket" data-category="teatro">
-                <img src="t1.png" alt="Teatro 1">
+                <img src="Images/t1.png" alt="Teatro 1">
             </div>
             <div class="ticket" data-category="teatro">
-                <img src="t2.png" alt="Teatro 2">
+                <img src="Images/t2.png" alt="Teatro 2">
             </div>
             <div class="ticket" data-category="teatro">
-                <img src="t3.png" alt="Teatro 3">
+                <img src="Images/t3.png" alt="Teatro 3">
             </div>
             <div class="ticket" data-category="teatro">
-                <img src="t4.png" alt="Teatro 4">
+                <img src="Images/t4.png" alt="Teatro 4">
             </div>
             <div class="ticket" data-category="teatro">
-                <img src="t5.png" alt="Teatro 5">
+                <img src="Images/t5.png" alt="Teatro 5">
             </div>
         </div>
        
@@ -272,19 +92,19 @@
         </div>
         <div class="ticket-seccao">
             <div class="ticket" data-category="museu">
-                <img src="m1.png" alt="Museu 1">
+                <img src="Images/m1.png" alt="Museu 1">
             </div>
             <div class="ticket" data-category="museu">
-                <img src="m2.png" alt="Museu 2">
+                <img src="Images/m2.png" alt="Museu 2">
             </div>
             <div class="ticket" data-category="museu">
-                <img src="m3.png" alt="Museu 3">
+                <img src="Images/m3.png" alt="Museu 3">
             </div>
             <div class="ticket" data-category="museu">
-                <img src="m4.png" alt="Museu 4">
+                <img src="Images/m4.png" alt="Museu 4">
             </div>
             <div class="ticket" data-category="museu">
-                <img src="m5.png" alt="Museu 5">
+                <img src="Images/m5.png" alt="Museu 5">
             </div>
         </div>
     </div>
@@ -305,8 +125,8 @@
             <div class="payment-methods">
                 <p>MÉTODOS DE PAGAMENTO:</p>
                 <div class="img-pagamento">
-                    <img src="paypal.png" alt="paypal">
-                    <img src="mbway.png" alt="MB Way">
+                    <img src="Images/paypal.png" alt="paypal">
+                    <img src="Images/mbway.png" alt="MB Way">
                 </div>
             </div>
         </div>
@@ -384,4 +204,3 @@ document.addEventListener("DOMContentLoaded", function() {
     </script>
 </body>
 </html>
-
