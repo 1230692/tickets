@@ -3,20 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Detalhes | Pagamento do Produto</title>
-    <link rel="stylesheet" href="Styles/pagamento.css">
 </head>
 <body onload="carregarDados()">
     <div id="senha-vendedor">
         <div id="senha-container">
-        <label for="senha">Senha do Vendedor:</label>
-        <input type="password" id="senha" placeholder="Insira a senha">
-        <button onclick="verificarSenha()">Entrar</button>
-    </div>
+            <label for="senha">Senha do Vendedor:</label>
+            <input type="password" id="senha" placeholder="Insira a senha">
+            <button onclick="verificarSenha()">Entrar</button>
+        </div>
     </div>
     <div class="status" id="status-area">Área do Cliente</div>
     <div class="container">
         <div class="detalhes">
-            
             <h2>Detalhes do Produto</h2>
             <div class="form-group">
                 <label for="promotor">Promotor:</label>
@@ -37,7 +35,7 @@
             <div class="form-group">
                 <label for="cartaz">Cartaz:</label>
                 <div class="cartaz-quadrado">
-                    <img src="Images/logo.jpeg" alt="Cartaz do Evento" width="50%">
+                    <img id="cartaz-img" src="logo.jpeg" alt="Cartaz do Evento">
                 </div>
             </div>
         </div>
@@ -73,7 +71,7 @@
 
     <div class="compra">
         <h2>Compra de Bilhetes</h2>
-        <form id="form-compra" action="processar_pagamento.php" method="post" onsubmit="redirecionarPagamento()"></form>
+        <form id="form-compra" action="processar_pagamento.php" method="post" onsubmit="return redirecionarPagamento()"></form>
         <form action="processar_pagamento.php" method="post">
             <div class="form-group">
                 <label for="quantidade">Quantidade:</label>
@@ -113,6 +111,12 @@
         </div>
     </div>
 
+    <div id="editar-cartaz" class="form-group hidden">
+        <label for="nova-imagem-cartaz">Nova Imagem do Cartaz:</label>
+        <input type="file" id="nova-imagem-cartaz" accept="image/*">
+        <button onclick="alterarCartaz()">Alterar Imagem</button>
+    </div>
+
     <div class="button-group hidden" id="submit-changes">
         <button onclick="alterarMudanca()">Submeter Alterações</button>
         <button onclick="voltarCliente()">Voltar para Cliente</button>
@@ -136,32 +140,28 @@
             document.getElementById('status-area').textContent = 'Área do Vendedor';
             document.getElementById('submit-changes').classList.remove('hidden');
             document.getElementById('senha-vendedor').classList.remove('hidden');
+            document.getElementById('editar-cartaz').classList.remove('hidden');
         }
 
         document.getElementById('telemovel').addEventListener('input', function() {
-    // Remove todos os caracteres que não são números , /\D/ é uma expressao que corresponde a todos
-    // os caracteres que nao sao digitos, e o "g" indica que a substituicao deve ser feita globalmente em toda a string
-    this.value = this.value.replace(/\D/g, '');
+            this.value = this.value.replace(/\D/g, '');
+            if (this.value.length > 9) {
+                this.value = this.value.slice(0, 9);
+            }
+        });
 
-    // Limita o número de caracteres a 9
-    if (this.value.length > 9) {
-        this.value = this.value.slice(0, 9);
-    }
-    });
-
-    document.getElementById('botao-comprar').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-
-        const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
-        if (metodoPagamento === 'MBWAY') {
-            window.location.href = 'https://www.mbway.pt';
-        } else if (metodoPagamento === 'PAYPAL') {
-            window.location.href = 'https://www.paypal.com/pt/home';
-        }
-    });
+        document.getElementById('botao-comprar').addEventListener('click', function(event) {
+            event.preventDefault();
+            const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
+            if (metodoPagamento === 'MBWAY') {
+                window.location.href = 'https://www.mbway.pt';
+            } else if (metodoPagamento === 'PAYPAL') {
+                window.location.href = 'https://www.paypal.com/pt/home';
+            }
+        });
 
         function alterarMudanca() {
-            const dados = {
+            const dadosAtuais = {
                 promotor: document.getElementById('promotor').value,
                 duracao: document.getElementById('duracao').value,
                 introducao: document.getElementById('introducao').value,
@@ -171,9 +171,18 @@
                 fim: document.getElementById('fim').value,
                 horario: document.getElementById('horario').value,
                 classificacao: document.getElementById('classificacao').value,
-                preco: document.getElementById('preco').value
+                preco: document.getElementById('preco').value,
+                cartaz: document.querySelector('.cartaz-quadrado img').src
             };
-            localStorage.setItem('dadosEvento', JSON.stringify(dados)); //transforma o objeto dadosEvento em string dados
+
+            const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
+
+            if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
+                alert('Nenhuma alteração foi feita.');
+                return;
+            }
+
+            localStorage.setItem('dadosEvento', JSON.stringify(dadosAtuais));
             alert('Alterações submetidas com sucesso!');
         }
 
@@ -190,61 +199,48 @@
                 document.getElementById('horario').value = dados.horario;
                 document.getElementById('classificacao').value = dados.classificacao;
                 document.getElementById('preco').value = dados.preco;
+                document.getElementById('cartaz-img').src = dados.cartaz;
             }
         }
 
-        function alterarMudanca() {
-        const dadosAtuais = {
-        promotor: document.getElementById('promotor').value,
-        duracao: document.getElementById('duracao').value,
-        introducao: document.getElementById('introducao').value,
-        sinopse: document.getElementById('sinopse').value,
-        nome_evento: document.getElementById('nome_evento').value,
-        inicio: document.getElementById('inicio').value,
-        fim: document.getElementById('fim').value,
-        horario: document.getElementById('horario').value,
-        classificacao: document.getElementById('classificacao').value,
-        preco: document.getElementById('preco').value
-    };
+        function alterarCartaz() {
+            const novaImagem = document.getElementById('nova-imagem-cartaz').files[0];
+            const reader = new FileReader();
 
-    const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
+            reader.onload = function(event) {
+                document.getElementById('cartaz-img').src = event.target.result;
+                alterarMudanca(); 
+            };
 
-    if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
-        alert('Nenhuma alteração foi feita.');
-        return;
-    }
+            reader.readAsDataURL(novaImagem);
+        }
 
-    localStorage.setItem('dadosEvento', JSON.stringify(dadosAtuais));
-    alert('Alterações submetidas com sucesso!');
-}
+        function voltarCliente() {
+            const dadosAtuais = {
+                promotor: document.getElementById('promotor').value,
+                duracao: document.getElementById('duracao').value,
+                introducao: document.getElementById('introducao').value,
+                sinopse: document.getElementById('sinopse').value,
+                nome_evento: document.getElementById('nome_evento').value,
+                inicio: document.getElementById('inicio').value,
+                fim: document.getElementById('fim').value,
+                horario: document.getElementById('horario').value,
+                classificacao: document.getElementById('classificacao').value,
+                preco: document.getElementById('preco').value,
+                cartaz: document.querySelector('.cartaz-quadrado img').src
+            };
 
-function voltarCliente() {
-    const dadosAtuais = {
-        promotor: document.getElementById('promotor').value,
-        duracao: document.getElementById('duracao').value,
-        introducao: document.getElementById('introducao').value,
-        sinopse: document.getElementById('sinopse').value,
-        nome_evento: document.getElementById('nome_evento').value,
-        inicio: document.getElementById('inicio').value,
-        fim: document.getElementById('fim').value,
-        horario: document.getElementById('horario').value,
-        classificacao: document.getElementById('classificacao').value,
-        preco: document.getElementById('preco').value
-    };
+            const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
 
-    const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
-
-    if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
-        alert('Nenhuma alteração foi feita.');
-        window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/detalhes%20%7C%20pagamento%20produto.html';
-        return;
-    }
-
-    const confirmacao = confirm('Deseja descartar as alterações e voltar para a página do cliente?');
-    if (confirmacao) {
-        window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/detalhes%20%7C%20pagamento%20produto.html';
-    }
-}
+            if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
+                window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/teste.html'; 
+            } else {
+                const confirmacao = confirm('Deseja descartar as alterações e voltar para a página do cliente?');
+                if (confirmacao) {
+                    window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/teste.html';
+                }
+            }
+        }
     </script>
 </body>
 </html>
