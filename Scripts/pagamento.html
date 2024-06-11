@@ -1,250 +1,90 @@
-<!DOCTYPE html>
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Detalhes | Pagamento do Produto</title>
-    <link rel="stylesheet" href="Styles/pagamento.css">
+    <title>Cliente</title>
+    <link rel="stylesheet" href="Styles/cliente.css">
 </head>
-<body onload="carregarDados()">
-    <div id="senha-vendedor">
-        <div id="senha-container">
-        <label for="senha">Senha do Vendedor:</label>
-        <input type="password" id="senha" placeholder="Insira a senha">
-        <button onclick="verificarSenha()">Entrar</button>
-    </div>
-    </div>
-    <div class="status" id="status-area">Área do Cliente</div>
+<body>
     <div class="container">
-        <div class="detalhes">
-            
-            <h2>Detalhes do Produto</h2>
-            <div class="form-group">
-                <label for="promotor">Promotor:</label>
-                <input type="text" id="promotor" name="promotor" placeholder="Promotor" readonly>
-            </div>
-            <div class="form-group">
-                <label for="duracao">Duração:</label>
-                <input type="text" id="duracao" name="duracao" placeholder="Duração" readonly>
-            </div>
-            <div class="form-group">
-                <label for="introducao">Breve introdução:</label>
-                <textarea id="introducao" name="introducao" placeholder="Breve introdução do evento" readonly></textarea>
-            </div>
-            <div class="form-group">
-                <label for="sinopse">Sinopse:</label>
-                <textarea id="sinopse" name="sinopse" placeholder="Sinopse do evento" readonly></textarea>
-            </div>
-            <div class="form-group">
-                <label for="cartaz">Cartaz:</label>
-                <div class="cartaz-quadrado">
-                    <img src="Images/logo.jpeg" alt="Cartaz do Evento" width="50%">
+        <header>
+            <div class="profile-container">
+                <input type="file" id="profile-image-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)">
+                <div class="profile" onclick="document.getElementById('profile-image-upload').click();">
+                    <img src="Images/profile.png" alt="Profile Icon">
+                </div>
+                <div class="contact-info">
+                    <input type="text" placeholder="Nome" name="nome" required>
+                    <input type="tel" placeholder="Contacto" name="contacto" required>
                 </div>
             </div>
-        </div>
-        
-        <div class="cartaz">
-            <h2>Cartaz do Evento</h2>
-            <div class="form-group">
-                <label for="nome_evento">Nome do Evento:</label>
-                <input type="text" id="nome_evento" name="nome_evento" placeholder="Nome do Evento" readonly>
-            </div>
-            <div class="form-group">
-                <label for="inicio">Início:</label>
-                <input type="text" id="inicio" name="inicio" placeholder="Início" readonly>
-            </div>
-            <div class="form-group">
-                <label for="fim">Fim:</label>
-                <input type="text" id="fim" name="fim" placeholder="Fim" readonly>
-            </div>
-            <div class="form-group">
-                <label for="horario">Horário:</label>
-                <input type="text" id="horario" name="horario" placeholder="Horário" readonly>
-            </div>
-            <div class="form-group">
-                <label for="classificacao">Classificação Etária:</label>
-                <input type="text" id="classificacao" name="classificacao" placeholder="Classificação Etária" readonly>
-            </div>
-            <div class="form-group">
-                <label for="preco">Preço:</label>
-                <input type="text" id="preco" name="preco" placeholder="Preço" readonly>
-            </div>
-        </div>
-    </div>
-
-    <div class="compra">
-        <h2>Compra de Bilhetes</h2>
-        <form id="form-compra" action="processar_pagamento.php" method="post" onsubmit="redirecionarPagamento()"></form>
-        <form action="processar_pagamento.php" method="post">
-            <div class="form-group">
-                <label for="quantidade">Quantidade:</label>
-                <input type="text" id="quantidade" name="quantidade_bilhete" placeholder="Quantidade" required>
-            </div>
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="payment-methods">
-                <div>
+        </header>
+        <section class="history">
+            <h2>Pedidos</h2>
+            <div class="sale-details">
+                <div class="tickets">
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                    <div class="ticket">layout do bilhete</div>
+                </div>
+        </section>
+        <section class="add-tickets">
+            <h2>Pagamento</h2>
+            <div class="form">
+                <label for="paypal">
+                    <p><img src="Images/paypal.png" width="50" height="40" alt="PAYPAL">
+                    </p>
+                    <input type="radio" id="paypal" name="pagamento" value="PAYPAL" required>
+                    </label>
                     <label for="mbway">
-                        <input type="radio" id="mbway" name="pagamento" value="MBWAY" required>
-                        <img src="MBWAY.jpeg" width="60" height="45" alt="MBWAY">
-                        MBWAY
-                    </label>
-                </div>
-                <div>
-                    <label for="paypal">
-                        <input type="radio" id="paypal" name="pagamento" value="PAYPAL" required>
-                        <img src="PAYPAL.jpeg" width="50" height="40" alt="PAYPAL">
-                        PAYPAL
-                    </label>
+                        <p><img src="Images/mbway.png" width="55" height="40" alt="mbway">
+                        </p>
+                        <input type="radio" id="mbway" name="pagamento" value="mbway" required>
+                        </label>
+                <div class="form-group">
+                    <label for="numero-telemovel">Número de telemovél:</label>
+                    <input type="text" id="numero-telemovel">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="telemovel">Telemóvel:</label>
-                <input type="text" id="telemovel" name="telemovel" placeholder="Telemóvel" required>
-            </div>
-            <div class="form-group">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" placeholder="Nome" required>
-            </div>
-        </form>
-        <div class="button-group">
-            <button id="botao-comprar">COMPRAR</button>
-        </div>
+            <button class="logout" onclick="logout()">TERMINAR SESSÃO</button> 
+        </section>
     </div>
-
-    <div class="button-group hidden" id="submit-changes">
-        <button onclick="alterarMudanca()">Submeter Alterações</button>
-        <button onclick="voltarCliente()">Voltar para Cliente</button>
-    </div>
-
-    <script>
-        function verificarSenha() {
-            const senha = document.getElementById('senha').value;
-            if (senha === 'DEAPC') {
-                entrarVendedor();
-            } else {
-                alert('Senha incorreta!');
+    <script>  
+        function previewProfileImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const dataURL = reader.result;
+                    const profileImage = document.querySelector('.profile img');
+                    profileImage.src = dataURL;
+                };
             }
         }
+       
+        function logout() {
+    const confirmLogout = confirm("Tem a certeza que deseja terminar sessão?");
+    if (confirmLogout) {
+        const numeroTelemovel = document.getElementById('numero-telemovel').value;
+        console.log({
+            numeroTelemovel
+        });
 
-        function entrarVendedor() {
-            const elementos = document.querySelectorAll('.detalhes input, .detalhes textarea, .cartaz input, .cartaz textarea');
-            elementos.forEach(elemento => {
-                elemento.readOnly = false;
-            });
-            document.getElementById('status-area').textContent = 'Área do Vendedor';
-            document.getElementById('submit-changes').classList.remove('hidden');
-            document.getElementById('senha-vendedor').classList.remove('hidden');
-        }
-
-        document.getElementById('telemovel').addEventListener('input', function() {
-    // Remove todos os caracteres que não são números , /\D/ é uma expressao que corresponde a todos
-    // os caracteres que nao sao digitos, e o "g" indica que a substituicao deve ser feita globalmente em toda a string
-    this.value = this.value.replace(/\D/g, '');
-
-    // Limita o número de caracteres a 9
-    if (this.value.length > 9) {
-        this.value = this.value.slice(0, 9);
-    }
-    });
-
-    document.getElementById('botao-comprar').addEventListener('click', function(event) {
-        event.preventDefault(); // Evita que o formulário seja enviado automaticamente
-
-        const metodoPagamento = document.querySelector('input[name="pagamento"]:checked').value;
-        if (metodoPagamento === 'MBWAY') {
-            window.location.href = 'https://www.mbway.pt';
-        } else if (metodoPagamento === 'PAYPAL') {
-            window.location.href = 'https://www.paypal.com/pt/home';
-        }
-    });
-
-        function alterarMudanca() {
-            const dados = {
-                promotor: document.getElementById('promotor').value,
-                duracao: document.getElementById('duracao').value,
-                introducao: document.getElementById('introducao').value,
-                sinopse: document.getElementById('sinopse').value,
-                nome_evento: document.getElementById('nome_evento').value,
-                inicio: document.getElementById('inicio').value,
-                fim: document.getElementById('fim').value,
-                horario: document.getElementById('horario').value,
-                classificacao: document.getElementById('classificacao').value,
-                preco: document.getElementById('preco').value
-            };
-            localStorage.setItem('dadosEvento', JSON.stringify(dados)); //transforma o objeto dadosEvento em string dados
-            alert('Alterações submetidas com sucesso!');
-        }
-
-        function carregarDados() {
-            const dados = JSON.parse(localStorage.getItem('dadosEvento'));
-            if (dados) {
-                document.getElementById('promotor').value = dados.promotor;
-                document.getElementById('duracao').value = dados.duracao;
-                document.getElementById('introducao').value = dados.introducao;
-                document.getElementById('sinopse').value = dados.sinopse;
-                document.getElementById('nome_evento').value = dados.nome_evento;
-                document.getElementById('inicio').value = dados.inicio;
-                document.getElementById('fim').value = dados.fim;
-                document.getElementById('horario').value = dados.horario;
-                document.getElementById('classificacao').value = dados.classificacao;
-                document.getElementById('preco').value = dados.preco;
-            }
-        }
-
-        function alterarMudanca() {
-        const dadosAtuais = {
-        promotor: document.getElementById('promotor').value,
-        duracao: document.getElementById('duracao').value,
-        introducao: document.getElementById('introducao').value,
-        sinopse: document.getElementById('sinopse').value,
-        nome_evento: document.getElementById('nome_evento').value,
-        inicio: document.getElementById('inicio').value,
-        fim: document.getElementById('fim').value,
-        horario: document.getElementById('horario').value,
-        classificacao: document.getElementById('classificacao').value,
-        preco: document.getElementById('preco').value
-    };
-
-    const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
-
-    if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
-        alert('Nenhuma alteração foi feita.');
-        return;
-    }
-
-    localStorage.setItem('dadosEvento', JSON.stringify(dadosAtuais));
-    alert('Alterações submetidas com sucesso!');
-}
-
-function voltarCliente() {
-    const dadosAtuais = {
-        promotor: document.getElementById('promotor').value,
-        duracao: document.getElementById('duracao').value,
-        introducao: document.getElementById('introducao').value,
-        sinopse: document.getElementById('sinopse').value,
-        nome_evento: document.getElementById('nome_evento').value,
-        inicio: document.getElementById('inicio').value,
-        fim: document.getElementById('fim').value,
-        horario: document.getElementById('horario').value,
-        classificacao: document.getElementById('classificacao').value,
-        preco: document.getElementById('preco').value
-    };
-
-    const dadosAntigos = JSON.parse(localStorage.getItem('dadosEvento'));
-
-    if (JSON.stringify(dadosAtuais) === JSON.stringify(dadosAntigos)) {
-        alert('Nenhuma alteração foi feita.');
-        window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/detalhes%20%7C%20pagamento%20produto.html';
-        return;
-    }
-
-    const confirmacao = confirm('Deseja descartar as alterações e voltar para a página do cliente?');
-    if (confirmacao) {
-        window.location.href = 'file:///Users/tiago.04.cruz/Faculdade/1%C2%BAAno-%202%C2%BASemestre/DEAPC/Trabalho%20Pr%C3%A1tico/detalhes%20%7C%20pagamento%20produto.html';
+        alert("Redirecionando para a página inicial.");
+        
+        window.location.href = 'index.html';
     }
 }
+
     </script>
 </body>
 </html>
+
+
