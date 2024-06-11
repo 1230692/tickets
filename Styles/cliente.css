@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    width: 70%;
+    width: 100%;
     background-color: white;
     padding: 20px;
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.1);
@@ -68,6 +68,8 @@ header {
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    display: block;
+    margin: 0 auto;
 }
 
 .logout:hover {
