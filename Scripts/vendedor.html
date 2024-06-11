@@ -8,7 +8,8 @@
     <div class="container">
         <header>
             <div class="profile-container">
-                <div class="profile">
+                <input type="file" id="profile-image-upload" accept="image/*" style="display: none;" onchange="previewProfileImage(event)">
+                <div class="profile" onclick="document.getElementById('profile-image-upload').click();">
                     <img src="profile.png" alt="Profile Icon">
                 </div>
                 <div class="contact-info">
@@ -34,15 +35,23 @@
                     <div class="ticket">layout do bilhete</div>
                     <div class="ticket">layout do bilhete</div>
                 </div>
-                <div>Detalhe da venda - Recibo da compra</div>
-                <div>Detalhe da venda - Recibo da compra</div>
+                <div>Detalhe da venda - Recibo da compra
+                <input type="file" id="receipt-pdf-upload" accept=".pdf" onchange="previewReceiptPDF(event)">
             </div>
+            <div id="receipt-pdf-container"></div>
+    
         </section>
         <section class="add-tickets">
             <h2>Adicionar Bilhetes</h2>
             <div class="form">
                 <div class="form-group">
-                    <div class="ticket-layout" id="event-layout">layout do bilhete</div>
+                    <div class="ticket-layout" id="event-layout">
+                        <img id="ticket-image" src="" alt="layout do bilhete" style="display: none;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ticket-image-upload">Imagem do Bilhete</label>
+                    <input type="file" id="ticket-image-upload" accept="image/*" onchange="previewImage(event)">
                 </div>
                 <div class="form-group">
                     <label for="event-name">Nome do Evento</label>
@@ -77,10 +86,75 @@
                     <textarea id="synopse"></textarea>
                 </div>
             </div>
+            <button onclick="saveData()">Guardar</button> 
         </section>
     </div>
+    <script>
+        function previewImage(event) {
+            const input = event.target;
+            const reader = new FileReader();
+            reader.onload = function() {
+                const dataURL = reader.result;
+                const ticketImage = document.getElementById('ticket-image');
+                ticketImage.src = dataURL;
+                ticketImage.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+       
+        function previewProfileImage(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const dataURL = reader.result;
+                    const profileImage = document.querySelector('.profile img');
+                    profileImage.src = dataURL;
+                };
+            }
+        }
+        function previewReceiptPDF(event) {
+            const input = event.target;
+            if (input.files && input.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function() {
+                    const dataURL = reader.result;
+                    const pdfContainer = document.getElementById('receipt-pdf-container');
+                    const pdfFileName = input.files[0].name;
+                    pdfContainer.innerHTML = <a href="${dataURL}" target="_blank">Abrir PDF</a>;
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+        function saveData() {
+            const confirmSave = confirm("Tem certeza de que deseja guardar todas as informações?");
+            if (confirmSave) {
+                const eventName = document.getElementById('event-name').value;
+                const promoter = document.getElementById('promoter').value;
+                const duration = document.getElementById('duration').value;
+                const intro = document.getElementById('intro').value;
+                const ageClass = document.getElementById('age-class').value;
+                const price = document.getElementById('price').value;
+                const dateAndTime = document.getElementById('data-tempo').value;
+                const synopse = document.getElementById('synopse').value;
+                const ticketImage = document.getElementById('ticket-image').src;
+
+
+                console.log({
+                    eventName,
+                    promoter,
+                    duration,
+                    intro,
+                    ageClass,
+                    price,
+                    dateAndTime,
+                    synopse,
+                    ticketImage
+                });
+            }
+        }
+    </script>
 </body>
 </html>
-
-
        
+
