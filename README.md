@@ -4,6 +4,7 @@
 "Igor Ávila 1231194"
 "TIAGO 1231111"
 
+<<<<<<< HEAD
 Objetivos Da Aplicação:
 Facilitar a compra de bilhetes para eventos de forma intuitiva e segura.
 Proporcionar uma experiência de compra eficiente e simplista.
@@ -15,4 +16,15 @@ Vendedores -> Compra e Venda de Bilhetes, Gestão das Vendas
 Admins -> Controlo e Gestão Total
 =======
 Teste Simão
+=======
+Objetivos:
+
+Facilitar a compra de bilhetes para eventos de forma intuitiva e segura.
+Proporcionar uma experiência de compra eficiente e simplista.
+
+Tipos de utilizadores:
+Adms (controlo e gestão total) 
+Clientes (acesso á compra de bilhetes)
+Vendedores (compra e venda) ( gestão dos clientes)
+>>>>>>> 22d7b5b (Atualizado)
 
