@@ -12,7 +12,7 @@
             </div>
             <div class="box login">
                 <h2 class="CorTit">Login</h2>
-                <form>
+                <form action="login.php" method="post">
                     <input type="email" name="email" placeholder="Email" required>
                     <input type="password" name="password" placeholder="Password" required>
                     <input type="submit" value="Login">
@@ -21,7 +21,7 @@
         </div>
         <div class="box register">
             <h2 class="CorTit">Crie uma conta</h2>
-            <form onsubmit="return validarFormulario();">
+            <form action="register.php" method="post" onsubmit="return validarFormulario();">
                 <input type="text" name="first_name" id="first_name" placeholder="Primeiro nome" required>
                 <input type="text" name="surname" id="surname" placeholder="Sobrenome" required>
                 <input type="tel" name="mobile" id="ntelemovel" placeholder="Numero de telemóvel" required>
@@ -30,9 +30,7 @@
                 <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirmar password" required>
                 <div class="RadioButton">
                     <label><input type="radio" name="RadioButton" value="Cliente" required> Cliente</label>
-                </p>
                     <label><input type="radio" name="RadioButton" value="Vendedor" required> Vendedor</label>
-            </p>
                 </div>
                 <input type="submit" value="Criar Conta">
             </form>
@@ -46,7 +44,6 @@
         function validarNome() {
             var firstName = document.getElementById("first_name").value;
             var surname = document.getElementById("surname").value;
-           
 
             if (!isAlpha(firstName) || !isAlpha(surname)) {
                 alert("Por favor, certifique-se de que todos os campos de nome contêm apenas letras.");
